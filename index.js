@@ -1,6 +1,21 @@
 const app = require("express")();
 require("dotenv").config();
+const mongoose = require('mongoose')
+require('ejs')
+app.set('view engine', 'ejs')
 const port = process.env.PORT || 5454;
+const URI = process.env.uri || undefined
+
+mongoose.connect(URI)
+.then(()=>{
+console.log('database connect successfully');
+
+})
+.catch(()=>{
+  console.log(err);
+  
+})
+
 
 // Array of objects
 const cities = [
@@ -87,7 +102,10 @@ const cities = [
 ];
 
 app.get("/", (req, res) => {
-  res.send("working");
+  // res.send("working");
+  // res.sendFile(__dirname +'/public/index.html')
+  // res.send(__dirname)
+  res.render('index',{title: 'First EJS page', name: 'preciousou'})
 })
 
 
