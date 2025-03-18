@@ -5,12 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
 </head>
+
+<style>
+    .nav{
+        text-align: center;
+        margin-top: 100px;
+    }
+</style>
 <body>
-    <h1><%= name %></h1>
-    <% if (name == 'precious') { %>
-     <p><%= name %>is correct</p>
+
+    <!-- <h1><%= name %></h1> -->
+    <!-- <% if (name == 'precious') { %>
+    <p><%= name %>is correct</p>
     <% }else{ %>
         <p><%= name %>is not correct</p>
-        <% } %>
+        <% } %> -->
+
+<div class="nav">
+    <% if (score >=0 && score < 40) { %>
+    <h3 style="color: blue;">lagbaja failed</h3>
+    <% }else if (score >= 40 && score < 45) { %>
+        <h3 style="color: red;">lagbaja tried small </h3>
+        <% }else if (score >= 45 && score < 50) { %>
+        <h3 style="color: linen;">lagbaja barely passed</h3>
+        <% }else if (score >=50 && score < 60 ) {%>
+            <h3 style="color: green;">Lagbaja passed fairly</h3>
+            <% }else if (score >= 60 && score < 70) {%>
+                <h3 style="color: cyan;">Lagbaja did well</h3>
+                <% }else if (score>= 70 && score < 80) {%>
+                <h3 style="color: brown;">Lagbaja performed excellently</h3>
+                |<% }else if (score>= 80 && score < 100) {%>
+                <h3 style="color:purple;">Lagbaja performed exceptionally well</h3>
+        <% }else%>
+    </div>
 </body>
 </html>
