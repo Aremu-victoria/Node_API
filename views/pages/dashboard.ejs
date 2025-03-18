@@ -1,0 +1,6 @@
+<%- include('../partials/navbar') %>
+<h1 class="text-center">dashboard</h1>
+<% for( let index = 0; index < data.length; index++ ) { %>
+<p><%= data[index].name %></p>
+<% } %>
+<%- include('../partials/footer') %>

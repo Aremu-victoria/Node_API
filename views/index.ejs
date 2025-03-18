@@ -20,7 +20,7 @@
     <% }else{ %>
         <p><%= name %>is not correct</p>
         <% } %> -->
-
+        <%- include('partials/navbar') %>
 <div class="nav">
     <% if (score >=0 && score < 40) { %>
     <h3 style="color: blue;">lagbaja failed</h3>
@@ -37,6 +37,8 @@
                 |<% }else if (score>= 80 && score < 100) {%>
                 <h3 style="color:purple;">Lagbaja performed exceptionally well</h3>
         <% }else%>
+        <a href="pages/signup.ejs">go to sign up</a>
+        <%- include('partials/footer') %>
     </div>
 </body>
 </html>

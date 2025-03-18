@@ -1,21 +1,19 @@
 const app = require("express")();
 require("dotenv").config();
-const mongoose = require('mongoose')
-require('ejs')
-app.set('view engine', 'ejs')
+const mongoose = require("mongoose");
+require("ejs");
+app.set("view engine", "ejs");
 const port = process.env.PORT || 5454;
-const URI = process.env.uri || undefined
+const URI = process.env.uri || undefined;
 
-mongoose.connect(URI)
-.then(()=>{
-console.log('database connect successfully');
-
-})
-.catch(()=>{
-  console.log(err);
-  
-})
-
+mongoose
+  .connect(URI)
+  .then(() => {
+    console.log("database connect successfully");
+  })
+  .catch(() => {
+    console.log(err);
+  });
 
 // Array of objects
 const cities = [
@@ -100,19 +98,40 @@ const cities = [
     pictures: ["table_mountain.jpg", "robben_island.jpg"],
   },
 ];
+app.get("/dashboard", (req, res) => {
+  fetch("https://second-class.vercel.app/api")
+    .then((res) => res.json())
+    .then((data) => {
+      res.render("pages/dashboard", { data });
+    })
+    .catch((err)=>{
+      console.log(err);
+    });
+});
 
 app.get("/", (req, res) => {
   // res.send("working");
   // res.sendFile(__dirname +'/public/index.html')
   // res.send(__dirname)
-  res.render('index',{title: 'First EJS page', name: 'preciousou', score: 90 })
-})
+  res.render("index", {
+    title: "First EJS page",
+    name: "preciousou",
+    score: 90,
+  });
+});
 
+app.get("/signup", (req, res) => {
+  res.render("pages/signup");
+});
 
-app.get ('/api', (req,res) =>{
+app.get("/signin", (req, res) => {
+  res.render("pages/signin");
+});
+
+app.get("/api", (req, res) => {
   res.send(cities);
-})
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
-})
+});
