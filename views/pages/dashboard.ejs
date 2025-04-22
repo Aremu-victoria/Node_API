@@ -1,6 +1,40 @@
 <%- include('../partials/navbar') %>
 <h1 class="text-center">dashboard</h1>
+
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>S/N</th>
+        <th>Name</th>
+        <th>Population</th>
+        <th>Landmark</th>
+        <th>Landmass</th>
+        <th>picture</th>
+    </tr>
+</thead>
 <% for( let index = 0; index < data.length; index++ ) { %>
-<p><%= data[index].name %></p>
+    <tbody>
+        <tr>
+            <td>
+            <%= index+1 %>
+            </td>
+            <td>
+                <%= data[index].name %>
+            </td>
+            <td>
+                <%= data[index].population %>
+            </td>
+            <td>
+                <%= data[index].landmark %>
+            </td>
+            <td>
+                <%= data[index].landmass %>    
+            </td>
+            <td>
+                <img src="<%= data[index ].picture %>" alt="<%= data[index].name %> flag" width="100" height="50">
+            </td>
+        </tr>
+    </tbody>
 <% } %>
+</table>
 <%- include('../partials/footer') %>
